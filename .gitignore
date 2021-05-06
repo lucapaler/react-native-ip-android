@@ -1,0 +1,21 @@
+# OSX
+.DS_Store
+
+# node.js
+node_modules/
+yarn-error.log
+yarn.lock
+
+# Android/IntelliJ
+build/
+.idea
+.gradle
+local.properties
+*.iml
+.project
+.settings
+
+# BUCK
+buck-out/
+\.buckd/
+*.keystore
