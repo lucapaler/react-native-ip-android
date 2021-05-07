@@ -10,6 +10,8 @@
 //   previous location:
 //   - https://github.com/facebook/react-native/blob/0.58-stable/local-cli/templates/HelloWorld/android/app/build.gradle
 
+import groovy.json.JsonSlurper
+
 // These defaults should reflect the SDK versions used by
 // the minimum React Native version supported.
 def DEFAULT_COMPILE_SDK_VERSION = 28
@@ -32,11 +34,13 @@ buildscript {
     if (project == rootProject) {
         repositories {
             google()
+            jcenter()
         }
         dependencies {
             // This should reflect the Gradle plugin version used by
             // the minimum React Native version supported.
             classpath 'com.android.tools.build:gradle:3.4.1'
+            classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.31'
         }
     }
 }
@@ -67,6 +71,7 @@ repositories {
         url "$rootDir/../node_modules/jsc-android/dist"
     }
     google()
+    jcenter()
 }
 
 dependencies {
@@ -75,13 +80,13 @@ dependencies {
 }
 
 def configureReactNativePom(def pom) {
-    def packageJson = new groovy.json.JsonSlurper().parseText(file('../package.json').text)
+    def packageJson = new JsonSlurper().parseText(file('../package.json').text)
 
     pom.project {
         name packageJson.title
         artifactId packageJson.name
         version = packageJson.version
-        group = "com.reactlibrary"
+        group = "com.lucapalermo"
         description packageJson.description
         url packageJson.repository.baseUrl
 
