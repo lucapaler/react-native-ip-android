@@ -2,7 +2,7 @@
 
 import { NativeModules } from 'react-native';
 
-const { IpAndroid } = NativeModules;
+const { RNIpAndroid } = NativeModules;
 
 export default class IP {
   /**
@@ -12,7 +12,9 @@ export default class IP {
    *
    * @returns {Promise} Promise containing string output of command or thrown error.
    */
-  getNeighbors() {
-    return IpAndroid.getNeighbors();
+  static async getNeighbors() {
+    const result = await RNIpAndroid.getNeighbors();
+
+    return result;
   }
 }

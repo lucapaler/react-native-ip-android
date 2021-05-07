@@ -21,7 +21,7 @@ public class ReactNativeIpAndroidModule extends ReactContextBaseJavaModule {
 
     @Override
     public String getName() {
-        return "ReactNativeIpAndroid";
+        return "RNIpAndroid";
     }
 
     @ReactMethod
